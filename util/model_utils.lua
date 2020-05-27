@@ -32,7 +32,7 @@ function model_utils.combine_all_parameters(...)
         if storageAndOffset == nil then
             return nil
         end
-        local _, offset = unpack(storageAndOffset)
+        local _, offset = table.unpack(storageAndOffset)
         return offset
     end
 
@@ -81,7 +81,7 @@ function model_utils.combine_all_parameters(...)
         end
 
         for _, storageAndOffset in pairs(storages) do
-            local k, v = unpack(storageAndOffset)
+            local k, v = table.unpack(storageAndOffset)
             flatParameters[{{v+1,v+k:size()}}]:copy(Tensor():set(k))
         end
 
